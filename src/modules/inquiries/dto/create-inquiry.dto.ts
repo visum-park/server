@@ -4,6 +4,10 @@ import { Type } from 'class-transformer';
 export class ContactDto {
   @IsNotEmpty()
   @IsString()
+  firstName: string;
+
+  @IsNotEmpty()
+  @IsString()
   lastName: string;
 
   @IsNotEmpty()
@@ -15,11 +19,6 @@ export class CreateInquiryDto {
   @IsNotEmpty()
   @IsString()
   subject: string;
-
-  @IsNotEmpty()
-  @IsString()
-  departmentId: string;
-
   @ValidateNested()
   @Type(() => ContactDto)
   contact: ContactDto;

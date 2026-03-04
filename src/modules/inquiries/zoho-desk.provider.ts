@@ -59,8 +59,9 @@ export class ZohoDeskProvider {
   public async createTicket(ticketData: any): Promise<any> {
     const token = await this.getAccessToken();
     const url = `https://desk.zoho.com/api/v1/tickets`;
+    const body = {... ticketData, departmentId : this.departmentId};
     try {
-      const response = await axios.post(url, ticketData, {
+      const response = await axios.post(url, body, {
         headers: {
           Authorization: `Zoho-oauthtoken ${token}`,
           'Content-Type': 'application/json',
